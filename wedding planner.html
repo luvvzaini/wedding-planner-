@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dastaan Events | Home</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        /* --- THEME COLORS --- */
+        :root {
+            --bistre: #210100;
+            --goldfinch: #E6A341;
+            --butter: #FECE79;
+            --indian-red: #B14A36;
+            --garnet: #8C0902;
+            --cream: #fffaf5;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--bistre);
+            font-family: 'Montserrat', sans-serif; /* Added a default font for consistency */
+        }
+
+        h1, h2, h3, h5 { font-family: 'Georgia', serif; } /* Matched navbar brand font */
+
+        .display-3 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* --- PACKAGES SECTION --- */
+        .package-section { padding: 80px 0; }
+
+        .custom-card {
+            border: none; border-radius: 15px; overflow: hidden;
+            transition: all 0.4s ease; background: #fff;
+            box-shadow: 0 5px 15px rgba(33, 1, 0, 0.1);
+        }
+        .custom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(140, 9, 2, 0.2);
+            border-bottom: 5px solid var(--goldfinch);
+        }
+        .card-img-top { height: 250px; object-fit: cover; }
+
+        .btn-package {
+            background-color: var(--indian-red); color: white; border: none;
+            border-radius: 25px; padding: 10px 20px; transition: 0.3s;
+        }
+        .btn-package:hover {
+            background-color: var(--goldfinch); color: var(--bistre); font-weight: bold;
+        }
+
+        /* --- NAVBAR STYLING --- */
+        .navbar-nav .nav-link {
+            position: relative; color: var(--bistre) !important; transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active { color: var(--garnet) !important; }
+        .navbar-nav .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 15%; background-color: var(--garnet); transition: width 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after { width: 70%; }
+
+        /* --- WHY CHOOSE US (FIXED) --- */
+        .why-section {
+            background-color: #ffffff; /* Clean white to rest the eyes */
+            padding: 80px 0;
+            border-top: 1px solid rgba(230,163,65,0.15);
+            border-bottom: 1px solid rgba(230,163,65,0.15);
+        }
+        .why-card {
+            padding: 30px 20px; background: #fff; border-radius: 16px; height: 100%;
+            border: 1px solid rgba(230,163,65,0.2); /* Added a subtle gold border */
+            transition: 0.3s;
+        }
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(230,163,65,0.15);
+            border-color: var(--goldfinch);
+        }
+
+        /* --- STATS SECTION (FIXED) --- */
+        .stats-section {
+            background-color: var(--bistre); color: var(--butter); padding: 80px 0;
+        }
+        .stat-box {
+            padding: 30px; border: 1px solid rgba(254, 206, 121, 0.2);
+            border-radius: 16px; background: rgba(255,255,255,0.03); /* Subtle glass effect */
+            transition: 0.3s;
+        }
+        .stat-box:hover { background: rgba(255,255,255,0.07); border-color: var(--goldfinch); }
+
+        /* --- STEPS SECTION (FIXED) --- */
+        .steps-section {
+            background-color: #fff4e6; /* Warm peach to bridge Stats and Footer */
+            padding: 80px 0;
+        }
+        .step-circle {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: var(--garnet); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; font-weight: bold; margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(140, 9, 2, 0.3);
+            font-family: 'Georgia', serif;
+        }
+        .step-item { text-align: center; }
+    </style>
+</head>
+
+<body>
+   <nav class="navbar navbar-expand-lg py-3 sticky-top" style="background: rgba(255, 250, 245, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(230, 163, 65, 0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="wedding planner.html" style="font-family: 'Georgia', serif; letter-spacing: 1px;">
+            <span style="color: #8C0902;">Dastaan Events</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link active fw-bold px-3" href="wedding planner.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold px-3" href="#packages">Packages</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold px-3" href="story.html">Our Story</a></li>
+                <li class="nav-item"><a class="nav-link fw-bold px-3" href="reviews.html">Reviews</a></li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <a href="signup.html" class="btn rounded-pill px-4 py-2 shadow-sm" style="background: linear-gradient(135deg, #E6A341, #FECE79); color: #210100; border: none; font-weight: bold;">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="position-relative vh-100 overflow-hidden">
+        <video autoplay muted loop class="position-absolute w-100 h-100" style="object-fit: cover;">
+            <source src="0223.mp4" type="video/mp4">
+        </video>
+        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+        <div class="container position-relative h-100 d-flex flex-column justify-content-center align-items-center text-center text-white">
+            <h1 class="display-3 fw-bold">Wedding Planning Starts Here</h1>
+            <p class="lead">From mehndi nights to your nikkah day, explore packages, customize your preferences, and plan every detail — all in one place.</p>
+            <div class="mt-4">
+                <a href="#packages" class="btn btn-light rounded-pill px-4 py-2 me-2 fw-bold">Let's go</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="package-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Exclusive Packages</h2>
+                <div style="width: 80px; height: 3px; background: var(--goldfinch); margin: 10px auto;"></div>
+                <p class="text-muted">Select a service to view our customized plans</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 custom-card">
+                        <img src="photography.jpg" class="card-img-top" alt="Photography">
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold" style="color: var(--bistre);">Photography</h5>
+                            <p class="small text-muted">Photographer & Videographer</p>
+                            <a href="kanwalsproject/kanwal.html" class="btn btn-package w-100">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 custom-card">
+                        <img src="venue.jpg" class="card-img-top" alt="Venue">
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold" style="color: var(--bistre);">Venue</h5>
+                            <p class="small text-muted">Halls & Outdoor Spaces</p>
+                            <a href="venue.html" class="btn btn-package w-100">Explore Venue</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 custom-card">
+                        <img src="Outdoor Catering _ Authentic Indian Catering Services in Fitzroy.jpg" class="card-img-top" alt="Catering">
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold" style="color: var(--bistre);">Catering</h5>
+                            <p class="small text-muted">Traditional & Modern Menus</p>
+                            <a href="catering/catering project.HTML" class="btn btn-package w-100">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 custom-card">
+                        <img src="florists.jpg" class="card-img-top" alt="Florist">
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold" style="color: var(--bistre);">Florist</h5>
+                            <p class="small text-muted">Decor & Floral Design</p>
+                            <a href="florist.html" class="btn btn-package w-100">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section (Cleaned up) -->
+    <section id="why-choose-us" class="why-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: var(--garnet);">Why Plan with Dastaan Events?</h2>
+                <div style="width: 80px; height: 3px; background: var(--goldfinch); margin: 10px auto;"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="why-card text-center">
+                        <div style="font-size: 40px; color: var(--goldfinch);">✨</div>
+                        <h5 class="fw-bold mt-3">Verified Vendors</h5>
+                        <p class="small text-muted">We personally met every photographer and florist to ensure premium quality for your big day.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="why-card text-center">
+                        <div style="font-size: 40px; color: var(--goldfinch);">💰</div>
+                        <h5 class="fw-bold mt-3">Transparent Pricing</h5>
+                        <p class="small text-muted">No hidden charges. View exact starting rates and customize packages to fit your budget.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="why-card text-center">
+                        <div style="font-size: 40px; color: var(--goldfinch);">📅</div>
+                        <h5 class="fw-bold mt-3">Stress-Free Booking</h5>
+                        <p class="small text-muted">Book your venue and catering in just a few clicks. We handle the follow-ups for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section (Refined) -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <h2 class="fw-bold display-4" style="color: var(--goldfinch);">1,200+</h2>
+                        <p class="mb-0 text-uppercase small fw-bold" style="letter-spacing: 1px; color: var(--butter);">Weddings Planned</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <h2 class="fw-bold display-4" style="color: var(--goldfinch);">500+</h2>
+                        <p class="mb-0 text-uppercase small fw-bold" style="letter-spacing: 1px; color: var(--butter);">Verified Venues</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-box">
+                        <h2 class="fw-bold display-4" style="color: var(--goldfinch);">25k+</h2>
+                        <p class="mb-0 text-uppercase small fw-bold" style="letter-spacing: 1px; color: var(--butter);">Happy Guests</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section (Fixed Contrast & Visual Flow) -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: var(--garnet);">Your Journey to "I Do"</h2>
+                <div style="width: 80px; height: 3px; background: var(--goldfinch); margin: 10px auto;"></div>
+                <p class="text-muted">Three simple steps to your dream wedding</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="step-item">
+                        <div class="step-circle">01</div>
+                        <h5 class="fw-bold">Pick a Venue</h5>
+                        <p class="small text-muted">Choose from our royal halls, gardens, or rooftops.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-item">
+                        <div class="step-circle">02</div>
+                        <h5 class="fw-bold">Customize Decor</h5>
+                        <p class="small text-muted">Work with our team to pick a theme that fits your story.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-item">
+                        <div class="step-circle">03</div>
+                        <h5 class="fw-bold">Celebrate</h5>
+                        <p class="small text-muted">Relax and enjoy while we handle every single detail.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--bistre); color: white; padding: 60px 0 30px;">
+        <div class="container">
+            <div class="row g-4 text-start">
+                <div class="col-md-4">
+                    <h3 class="fw-bold mb-3" style="color: var(--goldfinch); font-family: 'Georgia', serif;">Dastaan Events</h3>
+                    <p class="small text-white-50">Providing premium wedding planning, royal venues, and exquisite catering for your special day. We turn your dreams into a Dastaan.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" style="color: var(--goldfinch); border: 1px solid var(--goldfinch); padding: 8px 12px; border-radius: 5px; font-size: 18px; text-decoration: none;"><i class="bi bi-facebook"></i></a>
+                        <a href="#" style="color: var(--goldfinch); border: 1px solid var(--goldfinch); padding: 8px 12px; border-radius: 5px; font-size: 18px; text-decoration: none;"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Explore</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="venue.html" class="text-white-50 text-decoration-none">View Venues</a></li>
+                        <li class="mb-2"><a href="catering_folder/catering.html" class="text-white-50 text-decoration-none">Catering Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Photography</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Decor Themes</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3">Get In Touch</h5>
+                    <p class="small text-white-50 mb-1">📍 Karachi, Sindh, Pakistan</p>
+                    <p class="small text-white-50 mb-1">📞 +92 300 1234567</p>
+                    <p class="small text-white-50">✉️ info@dastaanevents.com</p>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center small text-white-50">
+                <p>&copy; 2026 Dastaan Events | University Web Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
