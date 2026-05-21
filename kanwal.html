@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DW Memories | Functional Elite Collective</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --bistre: #210100;    /* Dark Coffee */
+            --garnet: #8C0902;    /* Deep Red */
+            --goldfinch: #E6A341; /* Gold */
+            --butter: #FECE79;    /* Cream Text */
+            --cream-bg: #fcfaf7;  /* Page Background */
+        }
+
+        body { background-color: var(--cream-bg); font-family: 'Montserrat', sans-serif; color: var(--bistre); }
+        h1, h2, h3, h5, .navbar-brand { font-family: 'Cinzel', serif; }
+
+        /* --- Navbar (Original Kept) --- */
+        .navbar { background: var(--bistre) !important; border-bottom: 3px solid var(--goldfinch); padding: 15px 0; }
+        .navbar-brand { color: var(--butter) !important; letter-spacing: 2px; }
+
+        /* --- Filter Buttons --- */
+        .filter-section { text-align: center; margin-bottom: 40px; }
+        .btn-filter {
+            background: transparent; color: var(--garnet); border: 2px solid var(--garnet);
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;
+            padding: 10px 25px; margin: 5px; transition: 0.3s; border-radius: 0;
+        }
+        .btn-filter:hover, .btn-filter.active { background: var(--garnet); color: white; }
+
+        /* --- Artist Showcase --- */
+        .artist-showcase {
+            display: none; 
+            background: white; border: 1px solid var(--goldfinch); padding: 0;
+            margin-bottom: 40px; box-shadow: 10px 10px 0px rgba(230, 163, 65, 0.2);
+        }
+        .artist-showcase.show-card { display: block; } 
+        
+        .showcase-img-container {
+            background-color: var(--cream-bg); height: 100%; min-height: 450px;
+            display: flex; align-items: center; justify-content: center;
+            border-right: 3px solid var(--goldfinch); overflow: hidden;
+        }
+        .showcase-img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.3s; cursor: pointer;
+        }
+        .showcase-img:hover { transform: scale(1.03); }
+        
+        .showcase-content { padding: 40px; }
+        .artist-name { color: var(--garnet); font-size: 2rem; margin-bottom: 5px; }
+        .artist-spec { 
+            font-size: 0.8rem; color: var(--goldfinch); font-weight: 700; 
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block;
+        }
+        .artist-detail { margin-bottom: 8px; font-size: 0.95rem; }
+        .review-text { 
+            font-style: italic; color: #555; border-left: 3px solid var(--goldfinch); 
+            padding-left: 15px; font-size: 0.95rem; margin-top: 20px; margin-bottom: 25px; 
+        }
+        .portfolio-img { 
+            width: 100%; height: 120px; object-fit: cover; border: 1px solid var(--goldfinch); 
+            cursor: pointer; transition: 0.3s;
+        }
+        .portfolio-img:hover { opacity: 0.8; }
+
+        /* --- LIGHTBOX (Pop-up Full Image) --- */
+        .lightbox-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(33, 1, 0, 0.9); z-index: 10000; 
+            justify-content: center; align-items: center; cursor: pointer;
+        }
+        .lightbox-overlay.active { display: flex; }
+        .lightbox-img {
+            max-width: 90vw; max-height: 90vh; object-fit: contain; 
+            border: 4px solid var(--goldfinch); box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+        .lightbox-close {
+            position: absolute; top: 20px; right: 35px; color: var(--butter);
+            font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+        }
+        .lightbox-close:hover { color: var(--goldfinch); }
+
+        /* --- Booking Section --- */
+        .booking-section { background: var(--bistre); padding: 80px 0; border-top: 5px solid var(--goldfinch); margin-top: 40px; }
+        .booking-card { background: white; padding: 40px; border: 1px solid var(--goldfinch); box-shadow: 10px 10px 0px var(--goldfinch); }
+        .btn-booking { background: var(--garnet); color: white; width: 100%; padding: 15px; font-weight: 700; border: none; margin-top: 15px; }
+        .btn-booking:hover { background: #a10a02; color: white; }
+
+        /* --- Shadi Mubarak Message --- */
+        #shadiMsg {
+            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: white; border: 4px solid var(--goldfinch); padding: 40px; z-index: 10001;
+            text-align: center; box-shadow: 0 0 100px rgba(0,0,0,0.5);
+        }
+
+        /* --- Footer --- */
+        .footer-section {
+            background: var(--bistre); padding: 30px 0; border-top: 3px solid var(--goldfinch);
+            color: var(--butter); text-align: center; font-size: 0.85rem;
+        }
+        .footer-section a { color: var(--goldfinch); text-decoration: none; transition: 0.3s; }
+        .footer-section a:hover { color: white; }
+
+        @media (max-width: 768px) {
+            .showcase-img-container { min-height: 300px; border-right: none; border-bottom: 3px solid var(--goldfinch); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LIGHTBOX STRUCTURE -->
+    <div id="imageLightbox" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <img class="lightbox-img" id="lightboxImage" src="">
+    </div>
+
+    <div id="shadiMsg">
+        <h1 style="color: var(--garnet)">SHADI MUBARAK!</h1>
+        <p>Your booking has been received.</p>
+        <button class="btn btn-dark btn-sm" onclick="document.getElementById('shadiMsg').style.display='none'">Close</button>
+    </div>
+
+    <!-- ORIGINAL TOP NAVBAR -->
+    <nav class="navbar navbar-dark">
+        <div class="container justify-content-center">
+            <span class="navbar-brand">We Capture Desi Weddings</span>
+        </div>
+    </nav>
+
+    <!-- ORIGINAL MAIN NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top py-3" style="background-color: #FFF9F3 !important; border-bottom: 1px solid rgba(0,0,0,0.05); color: #210100;">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="c:\Users\hp\Desktop\html\wedding planner.html" style="font-family: 'Georgia', serif; color: #8C0902 !important; letter-spacing: 0.5px;">
+                Dastaan Events
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="filter: invert(0);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold px-3 py-2 rounded-pill d-flex align-items-center" href="c:\Users\hp\Desktop\html\kanwalsproject\kanwal.html"
+                        style="color: #210100 !important; transition: 0.3s; font-size: 0.95rem;">
+                            <i class="bi bi-camera me-2"></i> Photography
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold px-3 py-2 rounded-pill d-flex align-items-center" href="c:\Users\hp\Desktop\html\venue.html"
+                        style="color: #210100 !important; transition: 0.3s; font-size: 0.95rem;">
+                            <i class="bi bi-building me-2"></i> Venue
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold px-3 py-2 rounded-pill d-flex align-items-center" href="c:\Users\hp\Desktop\html\catering\catering project.HTML"
+                        style="color: #210100 !important; transition: 0.3s; font-size: 0.95rem;">
+                            <i class="bi bi-egg-fried me-2"></i> Catering
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold px-3 py-2 rounded-pill d-flex align-items-center" href="c:\Users\hp\Desktop\html\florist.html"
+                        style="color: #210100 !important; transition: 0.3s; font-size: 0.95rem;">
+                            <i class="bi bi-flower1 me-2"></i> Florist
+                        </a>
+                    </li>
+                </ul>
+                <a href="c:\Users\hp\Desktop\html\wedding planner.html" class="btn rounded-pill px-4 py-2 shadow-sm" 
+                   style="background: linear-gradient(135deg, #E6A341, #FECE79) !important; color: #210100 !important; font-weight: bold; border: none; font-size: 0.85rem;">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FILTER SECTION -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Our Specialized Artists</h2>
+        <div class="filter-section">
+            <button class="btn btn-filter active" onclick="filterArtists('all')">All Events</button>
+            <button class="btn btn-filter" onclick="filterArtists('nikkah')">Nikkah</button>
+            <button class="btn btn-filter" onclick="filterArtists('barat')">Barat</button>
+            <button class="btn btn-filter" onclick="filterArtists('valima')">Valima</button>
+            <button class="btn btn-filter" onclick="filterArtists('candid')">Candid</button>
+            <button class="btn btn-filter" onclick="filterArtists('portrait')">Portrait</button>
+        </div>
+
+        <!-- ARTIST SHOWCASE CARDS -->
+        
+        <!-- Fatima Khan (Nikkah) -->
+        <div class="artist-showcase nikkah show-card" id="card-nikkah">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <div class="showcase-img-container">
+                        <img src="fatima.jfif" class="showcase-img" onclick="openLightbox(this.src)" alt="Fatima Khan">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="showcase-content">
+                        <h3 class="artist-name">Fatima Khan</h3>
+                        <span class="artist-spec">Nikkah Expert</span>
+                        <p class="artist-detail"><strong>Experience:</strong> 8 Years</p>
+                        <p class="artist-detail"><strong>Education:</strong> NCA Lahore</p>
+                        <p class="review-text">"The best Nikkah shots we've ever seen!" - Sarah J.</p>
+                        <div class="row g-2">
+                            <div class="col-4"><img src="nikkah1.jpg" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="nikkah 2.jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="nikkah3.jpg" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hassan Ali (Barat) -->
+        <div class="artist-showcase barat" id="card-barat">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <div class="showcase-img-container">
+                        <img src="Betto Sabino - Copy.jfif" class="showcase-img" onclick="openLightbox(this.src)" alt="Hassan Ali">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="showcase-content">
+                        <h3 class="artist-name">Hassan Ali</h3>
+                        <span class="artist-spec">Barat Expert</span>
+                        <p class="artist-detail"><strong>Experience:</strong> 5 Years</p>
+                        <p class="artist-detail"><strong>Education:</strong> Indus Valley Karachi</p>
+                        <p class="review-text">"Energetic and cinematic Barat coverage." - Hamza K.</p>
+                        <div class="row g-2">
+                            <div class="col-4"><img src="download (3).jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="download (5).jpg" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="download (4).jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zoya Malik (Valima) -->
+        <div class="artist-showcase valima" id="card-valima">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <div class="showcase-img-container">
+                        <img src="zoya.jfif" class="showcase-img" onclick="openLightbox(this.src)" alt="Zoya Malik">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="showcase-content">
+                        <h3 class="artist-name">Zoya Malik</h3>
+                        <span class="artist-spec">Valima Expert</span>
+                        <p class="artist-detail"><strong>Experience:</strong> 10 Years</p>
+                        <p class="artist-detail"><strong>Education:</strong> London Academy</p>
+                        <p class="review-text">"Luxury Valima shots. Simply elite." - Zainab R.</p>
+                        <div class="row g-2">
+                            <div class="col-4"><img src="valima1.jpeg" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="valima3.jpeg" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="valima 4.jpeg" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arham Sheikh (Candid) -->
+        <div class="artist-showcase candid" id="card-candid">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <div class="showcase-img-container">
+                        <img src="hassan.jfif" class="showcase-img" onclick="openLightbox(this.src)" alt="Arham Sheikh">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="showcase-content">
+                        <h3 class="artist-name">Arham Sheikh</h3>
+                        <span class="artist-spec">Candid Expert</span>
+                        <p class="artist-detail"><strong>Experience:</strong> 6 Years</p>
+                        <p class="artist-detail"><strong>Education:</strong> BNU Lahore</p>
+                        <p class="review-text">"Beautiful candid moments." - Ali W.</p>
+                        <div class="row g-2">
+                            <div class="col-4"><img src="event 01 (2).jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="event 01.jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="event 03.jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sana Bukhari (Portrait) -->
+        <div class="artist-showcase portrait" id="card-portrait">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <div class="showcase-img-container">
+                        <img src="sana.jfif" class="showcase-img" onclick="openLightbox(this.src)" alt="Sana Bukhari">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="showcase-content">
+                        <h3 class="artist-name">Sana Bukhari</h3>
+                        <span class="artist-spec">Portrait Expert</span>
+                        <p class="artist-detail"><strong>Experience:</strong> 4 Years</p>
+                        <p class="artist-detail"><strong>Education:</strong> KSA Karachi</p>
+                        <p class="review-text">"Great focus on bridal details." - Maryam F.</p>
+                        <div class="row g-2">
+                            <div class="col-4"><img src="bridal shower1.jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="bridal shower2.jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                            <div class="col-4"><img src="Sehar hayat.jfif" class="portfolio-img" onclick="openLightbox(this.src)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOOKING SECTION -->
+    <div class="booking-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="booking-card">
+                        <h3 class="text-center mb-4">Reservation</h3>
+                        <form onsubmit="event.preventDefault(); document.getElementById('shadiMsg').style.display='block';">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control mb-3" required>
+                            <label class="form-label">Select Artist</label>
+                            <select class="form-select mb-3">
+                                <option>Fatima Khan (Nikkah)</option>
+                                <option>Hassan Ali (Barat)</option>
+                                <option>Zoya Malik (Valima)</option>
+                                <option>Arham Sheikh (Candid)</option>
+                                <option>Sana Bukhari (Portraits)</option>
+                            </select>
+                            <button type="submit" class="btn btn-booking">BOOK NOW</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIMPLE FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <p class="mb-1" style="font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 1.1rem;">Dastaan Events</p>
+            <p class="mb-2">We Capture Desi Weddings</p>
+            <div class="mb-3">
+                <a href="#" class="mx-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="mx-2"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="mx-2"><i class="bi bi-whatsapp"></i></a>
+            </div>
+            <p class="mb-0" style="font-size: 0.75rem; color: rgba(254, 206, 121, 0.6);">&copy; 2023 Dastaan Events. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // --- Filter Function ---
+        function filterArtists(category) {
+            const cards = document.querySelectorAll('.artist-showcase');
+            cards.forEach(card => card.classList.remove('show-card'));
+
+            if (category === 'all') {
+                cards.forEach(card => card.classList.add('show-card'));
+            } else {
+                const targetCard = document.getElementById('card-' + category);
+                if(targetCard) targetCard.classList.add('show-card');
+            }
+
+            const buttons = document.querySelectorAll('.btn-filter');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        // --- Lightbox Function (To see full image) ---
+        function openLightbox(src) {
+            document.getElementById('lightboxImage').src = src;
+            document.getElementById('imageLightbox').classList.add('active');
+        }
+
+        function closeLightbox(event) {
+            // Only close if clicking the dark background or the X button
+            if (event.target.id === 'imageLightbox' || event.target.classList.contains('lightbox-close')) {
+                document.getElementById('imageLightbox').classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

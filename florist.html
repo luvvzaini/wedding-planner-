@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dastaan Florals & Stages</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bistre: #210100;
+            --goldfinch: #E6A341;
+            --butter: #FECE79;
+            --garnet: #8C0902;
+            --cream: #fffaf5;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--bistre);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Nav & Buttons */
+        .navbar { background: white; border-bottom: 2px solid var(--butter); }
+        .btn-back {
+            text-decoration: none; color: var(--garnet); font-weight: bold;
+            padding: 8px 20px; border: 2px solid var(--butter); border-radius: 50px;
+            transition: 0.3s;
+        }
+        .btn-back:hover { background: var(--butter); transform: translateX(-5px); }
+
+        /* Why Choose Us Box */
+        .why-box {
+            background: white; border-radius: 30px; 
+            border-left: 10px solid var(--garnet);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Package Cards */
+        .pkg-card {
+            background: white; border: 2px solid var(--butter);
+            border-radius: 25px; transition: 0.4s; overflow: hidden;
+            cursor: pointer;
+        }
+        .pkg-card:hover { transform: scale(1.03); border-color: var(--garnet); }
+        
+        .pkg-img { height: 200px; width: 100%; object-fit: cover; }
+        
+        .price-tag {
+            background: var(--garnet); color: white;
+            padding: 5px 15px; border-radius: 20px; font-weight: bold;
+        }
+
+        /* Booking Section - FIXED TEXT COLOR */
+        .booking-container {
+            background: white; border: 3px solid var(--butter);
+            border-radius: 40px; padding: 50px;
+        }
+        .text-fix { color: var(--bistre) !important; }
+
+        .btn-submit {
+            background: var(--garnet); color: white; font-weight: bold;
+            border-radius: 50px; padding: 12px 35px; border: none;
+        }
+    </style>
+</head>
+<body>
+
+ <!-- Add this in <head> if not already there -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg sticky-top py-3" style="background: rgba(255,250,245,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(230,163,65,0.3); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+    <div class="container">
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold fs-4" href="c:\Users\hp\Desktop\html\wedding planner.html" style="font-family: 'Georgia', serif; color: #8C0902; letter-spacing: 1px;">
+            Dastaan Events
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav mx-auto gap-1">
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold px-3 py-2 rounded-pill" href="c:\Users\hp\Desktop\html\kanwalsproject\kanwal.html"
+                    style="color: #210100; transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(230,163,65,0.12)'"
+                    onmouseout="this.style.background='transparent'">
+                        <i class="bi bi-camera me-1"></i> Photography
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold px-3 py-2 rounded-pill" href="c:\Users\hp\Desktop\html\venue.html"
+                    style="color: #210100; transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(230,163,65,0.12)'"
+                    onmouseout="this.style.background='transparent'">
+                        <i class="bi bi-building me-1"></i> Venue
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold px-3 py-2 rounded-pill" href="c:\Users\hp\Desktop\html\catering\catering project.HTML"
+                    style="color: #210100; transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(230,163,65,0.12)'"
+                    onmouseout="this.style.background='transparent'">
+                        <i class="bi bi-egg-fried me-1"></i> Catering
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-semibold px-3 py-2 rounded-pill" href="c:\Users\hp\Desktop\html\florist.html"
+                    style="color: #210100; transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(230,163,65,0.12)'"
+                    onmouseout="this.style.background='transparent'">
+                        <i class="bi bi-flower1 me-1"></i> Florist
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Back to Home button -->
+            <a href="c:\Users\hp\Desktop\html\wedding planner.html" class="btn rounded-pill px-4 py-2" style="background: linear-gradient(135deg, #E6A341, #FECE79); color: #210100; font-weight: bold; border: none; font-size: 0.85rem;">
+                ← Back to Home
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="py-5">
+    <div class="container">
+        <div class="why-box p-5">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h2 class="fw-bold text-fix">Why Dastaan Florals?</h2>
+                    <p class="text-fix">We specialize in transforming ordinary spaces into dreamscapes. From the scent of fresh Jasmine to the structural elegance of a Royal Stage, we handle it all.</p>
+                    <ul class="list-unstyled mt-3 text-fix">
+                        <li>✨ <strong>Freshness:</strong> Sourced daily from local farms.</li>
+                        <li>✨ <strong>Design:</strong> Custom mood boards for every bride.</li>
+                        <li>✨ <strong>Precision:</strong> Setup completed 4 hours before the event.</li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <img src="c:\Users\hp\Desktop\html\Pakistani wedding decoration - stage design - etheral_.jpg" class="img-fluid rounded-5 shadow" alt="Main Design">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold" style="color: var(--garnet);">Choose Your Floral Vibe</h2>
+            <p>Click a package to see our signature designs</p>
+        </div>
+
+    <div class="row g-4">
+    <div class="col-md-3">
+        <div class="pkg-card text-center" data-bs-toggle="modal" data-bs-target="#nikkahGallery">
+            <img src="c:\Users\hp\Desktop\html\download (21).jpg" class="pkg-img" alt="Nikkah">
+            <div class="p-3">
+                <h5 class="fw-bold">Nikkah Minimal</h5>
+                <span class="price-tag">45,000 PKR</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="pkg-card text-center" data-bs-toggle="modal" data-bs-target="#mehndiGallery">
+            <img src="c:\Users\hp\Desktop\html\Bintezainab Collection.jpg" class="pkg-img" alt="Mehndi">
+            <div class="p-3">
+                <h5 class="fw-bold">Mehndi Glow</h5>
+                <span class="price-tag">85,000 PKR</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="pkg-card text-center" data-bs-toggle="modal" data-bs-target="#baratGallery">
+            <img src="c:\Users\hp\Desktop\html\Affordable Wedding Photographers in Pakistan _ Click to Explore Packages.jpg" class="pkg-img" alt="Barat">
+            <div class="p-3">
+                <h5 class="fw-bold">Royal Barat</h5>
+                <span class="price-tag">150,000 PKR</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="pkg-card text-center" data-bs-toggle="modal" data-bs-target="#walimaGallery">
+            <img src="c:\Users\hp\Desktop\html\download (32).jpg" class="pkg-img" alt="Walima">
+            <div class="p-3">
+                <h5 class="fw-bold">Walima Dream</h5>
+                <span class="price-tag">120,000 PKR</span>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="p-5" style="background-color: white; border: 3px solid var(--butter); border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+            <form id="bookingForm" class="row align-items-center g-4">
+                <div class="col-lg-3">
+                    <h2 class="fw-bold mb-1" style="color: var(--garnet);">Secure Your Date</h2>
+                    <p class="small text-muted mb-0">Karachi, Pakistan | +92 300 DASTAAN</p>
+                </div>
+                
+                <div class="col-lg-2">
+                    <input type="text" class="form-control rounded-pill border-2" placeholder="Your Name" required>
+                </div>
+                
+                <div class="col-lg-2">
+                    <input type="date" class="form-control rounded-pill border-2" required>
+                </div>
+
+                <div class="col-lg-3">
+                    <select class="form-select rounded-pill border-2" required>
+                        <option value="" disabled selected>Choose Package</option>
+                        <option>Nikkah Minimal</option>
+                        <option>Mehndi Glow</option>
+                        <option>Royal Barat</option>
+                        <option>Walima Dream</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-2 text-end">
+                    <button type="submit" class="btn px-4 py-2 fw-bold shadow-sm" style="background-color: var(--garnet); color: white; border-radius: 50px;">
+                        Book Now ✨
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="nikkahModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-5 border-0">
+            <div class="modal-body p-0">
+                <img src="nikkah-large.jpg" class="img-fluid rounded-5" alt="Nikkah Design">
+                <div class="p-4 text-center">
+                    <h4 class="fw-bold">White Rose Nikkah Stage</h4>
+                    <p class="text-muted">Features fresh jasmine strings and a minimalist white sofa setup.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-5 text-center p-5">
+            <h2 style="color: var(--garnet);">🎉 Thank You!</h2>
+            <p class="lead">Our lead designer will contact you soon to confirm your floral dastaan.</p>
+            <button type="button" class="btn btn-submit mx-auto" data-bs-dismiss="modal">Great!</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+        myModal.show();
+    });
+</script>
+
+<div class="modal fade" id="nikkahGallery" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body p-0">
+                <div class="row g-2">
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (18).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\Nikah Setup.jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (19).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (20).jpg" class="img-fluid rounded-4 shadow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="mehndiGallery" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body p-0">
+                <div class="row g-2">
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (23).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\62K views · 3_2K reactions _ Who says a haldi event has to be in yellow ! _ Divya Vithika Wedding Planners _ Facebook.jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (25).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (24).jpg" class="img-fluid rounded-4 shadow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="baratGallery" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body p-0">
+                <div class="row g-2">
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (26).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\Candlelit Courtyard Wedding.jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (27).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (28).jpg" class="img-fluid rounded-4 shadow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="walimaGallery" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body p-0">
+                <div class="row g-2">
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (31).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (30).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\download (29).jpg" class="img-fluid rounded-4 shadow"></div>
+                    <div class="col-6"><img src="c:\Users\hp\Desktop\html\walimadeco.jpg" class="img-fluid rounded-4 shadow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="background-color: var(--bistre); color: white; padding: 40px 0;">
+    <div class="container text-center">
+        <h3 class="fw-bold" style="color: var(--goldfinch);">Dastaan Events</h3>
+        <p class="small text-white-50 mb-0">&copy; 2026 Dastaan Events | University Web Project</p>
+    </div>
+</footer>
+
+</body>
+</html>
